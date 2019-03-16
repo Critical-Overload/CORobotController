@@ -53,7 +53,7 @@ import java.util.Locale;
  *
  * @see <a href="http://www.adafruit.com/products/2472">Adafruit IMU</a>
  */
-@TeleOp(name = "Sensor: BNO055 IMU", group = "Sensor")
+@TeleOp(name = "IMU Sample", group = "Sensor")
 
 public class IMUSample extends LinearOpMode
     {
