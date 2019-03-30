@@ -71,7 +71,7 @@ public class DemoTeleOp extends LinearOpMode {
         //This loop will keep running until stop is pressed. Everything that happens during the run will be in this loop
         while(opModeIsActive()){
 
-            
+
         }
     }
 }
