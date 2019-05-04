@@ -1,3 +1,8 @@
+/**
+ * IMURobotTest
+ *
+ * 30 March 2019
+ */
 package org.firstinspires.ftc.teamcode;
 
 import org.firstinspires.ftc.teamcode.IMURobot;
@@ -9,37 +14,39 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 
 @Autonomous(name = "IMURobotTest")
 public class IMURobotTest extends LinearOpMode {
-
+    //Declare motors
     private DcMotor motorFrontRight;
     private DcMotor motorFrontLeft;
     private DcMotor motorBackRight;
     private DcMotor motorBackLeft;
 
+    //Declare imu
     private BNO055IMU imu;
 
     public void runOpMode() throws InterruptedException{
-        //name the motors
+        //Initialize motors
         motorFrontRight = hardwareMap.dcMotor.get("FR");
         motorFrontLeft = hardwareMap.dcMotor.get("FL");
         motorBackRight = hardwareMap.dcMotor.get("BR");
         motorBackLeft = hardwareMap.dcMotor.get("BL");
+        //Initialize imu
+        imu = hardwareMap.get(BNO055IMU.class, "imu");
 
-        imu = hardwareMap.get(BNO055IMU.class, "imu"); //what is this do?
+        //Create an IMURobot object that we will use to run the robot
+        IMURobot robot = new IMURobot(motorFrontRight, motorFrontLeft, motorBackRight, motorBackLeft, imu, this);
 
-        IMURobot robot = new IMURobot(motorFrontRight, motorFrontLeft, motorBackRight, motorBackLeft, imu, this); //what does this do?
-
-        robot.setupRobot();//why do we do this, what does this do?
+        robot.setupRobot();//calibrate IMU, set any required parameters
 
         waitForStart(); //wait for the game to start
 
         robot.gyroTurn(90, 0.3); //turn 90 degrees counterclockwise
         sleep(500);
         robot.gyroTurn(-90, 0.3); //turn 120 degrees clockwise
-        //sleep(500); //wait
-        //robot.gyroDrive(0.3, 5);//go forward, time limit 5 seconds
-        //sleep(500);//wait
-        //robot.tankDrive(0.3, 0.3);//set power to motors, does not set time limit
-        //sleep(5000);//wait. This sets time limit for how long the above line runs
-        //robot.completeStop();//stop
+        sleep(500); //wait
+        robot.gyroDrive(0.3, 5);//go forward with gyro for 5 seconds
+        sleep(500);//wait
+        robot.tankDrive(0.3, 0.3);//set power to motors
+        sleep(5000);//drive for 5 seconds
+        robot.completeStop();//stop
     }
 }
