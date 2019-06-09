@@ -1,15 +1,14 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.old;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import org.firstinspires.ftc.robotcore.external.Func;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.DigitalChannel;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
-@Autonomous(name = "DriveControlTest")
+@Autonomous(name = "AutoNear")
 
-public class DriveControlTest extends LinearOpMode{
+public class AutoNear extends LinearOpMode{
 
     //declares motors and sensors
     private DcMotor motorFrontRight;
@@ -37,7 +36,7 @@ public class DriveControlTest extends LinearOpMode{
         
         
         /*
-        DriveAutonomous contains all our methods for robot automation
+        FunctionsForAutonomous contains all our methods for robot automation
         during the autonomous round. Here we create an DriveAutonomous 
         object named "robot", which we will use to call methods.
         */
@@ -46,8 +45,12 @@ public class DriveControlTest extends LinearOpMode{
         
         waitForStart();
         
+        //robot.resetBucket();
+        //robot.land();
+        robot.moveSide(12);
         robot.turn(90);
-
+        robot.move(24);
+        
     }
     
 }
