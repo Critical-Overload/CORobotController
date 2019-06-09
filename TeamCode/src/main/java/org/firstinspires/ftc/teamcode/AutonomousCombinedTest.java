@@ -57,6 +57,7 @@ import java.util.List;
  */
 @Autonomous(name = "AutonomousCombinedTest")
 public class AutonomousCombinedTest extends LinearOpMode {
+
     private DcMotor motorFrontRight;
     private DcMotor motorFrontLeft;
     private DcMotor motorBackRight;
@@ -138,7 +139,7 @@ public class AutonomousCombinedTest extends LinearOpMode {
         DriveControl is our driving class.
          */
 
-            DrivingControlTwo robot = new DrivingControlTwo(motorFrontRight, motorFrontLeft, motorBackRight, motorBackLeft,hingeMotor,bucketServo,intakeServo);
+            //DrivingControlTwo robot = new DrivingControlTwo(motorFrontRight, motorFrontLeft, motorBackRight, motorBackLeft,hingeMotor,bucketServo,intakeServo);
 
             while (opModeIsActive()) {
 
@@ -169,10 +170,10 @@ public class AutonomousCombinedTest extends LinearOpMode {
                             if (goldMineralX != -1 || silverMineral1X != -1 || silverMineral2X != -1) {
                                 if (silverMineral1X < silverMineral2X) {
                                     telemetry.addData("Gold Mineral Position", "Left");
-                                    robot.fourWheelTurn(-1,70);
-                                    robot.drive(-1,35);
-                                    robot.fourWheelTurn(1,30);
-                                    robot.drive(-1,35);
+                                    //robot.fourWheelTurn(-1,70);
+                                    //robot.drive(-1,35);
+                                    //robot.fourWheelTurn(1,30);
+                                    //robot.drive(-1,35);
                                     moveArm();
                                     intakeServo.setPower(1);
                                     sleep(3000);
@@ -185,10 +186,10 @@ public class AutonomousCombinedTest extends LinearOpMode {
 
                                 } else if (goldMineralX > silverMineral1X) {
                                     telemetry.addData("Gold Mineral Position", "Right");
-                                    robot.fourWheelTurn(1,10);
-                                    robot.drive(-1,35);
-                                    robot.fourWheelTurn(-1,60);
-                                    robot.drive(-1,55);
+                                    //robot.fourWheelTurn(1,10);
+                                    //robot.drive(-1,35);
+                                    //robot.fourWheelTurn(-1,60);
+                                    //robot.drive(-1,55);
                                     moveArm();
                                     intakeServo.setPower(1);
                                     sleep(3000);
@@ -204,8 +205,8 @@ public class AutonomousCombinedTest extends LinearOpMode {
 
                                 } else if(goldMineralX < silverMineral1X){
                                     telemetry.addData("Gold Mineral Position", "Center");
-                                    robot.fourWheelTurn(-1,15);
-                                    robot.drive(-1,55);
+                                    //robot.fourWheelTurn(-1,15);
+                                    //robot.drive(-1,55);
                                     moveArm();
                                     intakeServo.setPower(1);
                                     sleep(3000);
