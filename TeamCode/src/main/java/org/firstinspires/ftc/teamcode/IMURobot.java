@@ -75,6 +75,7 @@ public class IMURobot {
         parameters.loggingEnabled      = true;
         parameters.loggingTag          = "IMU";
         parameters.accelerationIntegrationAlgorithm = new JustLoggingAccelerationIntegrator();
+        parameters.mode                = BNO055IMU.SensorMode.IMU;
 
         return parameters;
     }

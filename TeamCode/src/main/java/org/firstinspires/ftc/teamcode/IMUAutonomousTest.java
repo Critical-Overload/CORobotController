@@ -154,12 +154,18 @@ public class IMUAutonomousTest extends LinearOpMode {
                             if (goldMineralX != -1 || silverMineral1X != -1 || silverMineral2X != -1) {
                                 if (silverMineral1X < silverMineral2X) {
                                     telemetry.addData("Gold Mineral Position", "Left");
+                                    robot.gyroTurn(70, 0.5);
+                                    robot.gyroDrive(-0.5, 5);
 
                                 } else if (goldMineralX > silverMineral1X) {
                                     telemetry.addData("Gold Mineral Position", "Right");
+                                    robot.gyroTurn(-10, 0.5);
+                                    robot.gyroDrive(-0.5, 5);
 
                                 } else if(goldMineralX < silverMineral1X){
                                     telemetry.addData("Gold Mineral Position", "Center");
+                                    robot.gyroTurn(15, 0.5);
+                                    robot.gyroDrive(-0.5, 5);
                                 }
                             }
                         }
@@ -199,6 +205,7 @@ public class IMUAutonomousTest extends LinearOpMode {
         int tfodMonitorViewId = hardwareMap.appContext.getResources().getIdentifier(
                 "tfodMonitorViewId", "id", hardwareMap.appContext.getPackageName());
         TFObjectDetector.Parameters tfodParameters = new TFObjectDetector.Parameters(tfodMonitorViewId);
+        tfodParameters.minimumConfidence = 0.9;
         tfod = ClassFactory.getInstance().createTFObjectDetector(tfodParameters, vuforia);
         tfod.loadModelFromAsset(TFOD_MODEL_ASSET, LABEL_GOLD_MINERAL, LABEL_SILVER_MINERAL);
     }
